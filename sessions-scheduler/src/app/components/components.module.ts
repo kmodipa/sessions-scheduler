@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { TimelineComponent } from './charts/timeline/timeline.component';
 import {NgApexchartsModule} from "ng-apexcharts";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 export const components = [
   HomeComponent,
@@ -15,7 +16,9 @@ export const components = [
   ],
   imports: [
     CommonModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule,
+    ReactiveFormsModule
   ], exports: [components]
 })
 export class ComponentsModule {

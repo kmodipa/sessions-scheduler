@@ -1,2 +1,122 @@
+<div class="main-container">
+  <div class="header">
+    SESSIONS SCHEDULER
+  </div>
+
+  <div class="body">
+    <div class="row">
+      <div class="card">
+        <div class="card-header">
+          <div class="header-text">
+            <h1>Period</h1>
+            <small>the period acts as a boundary for sessions</small>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="periodForm" (ngSubmit)="submitPeriod()">
+            <div class="row">
+              <div class="col-25">
+                <label for="period-start">Start:</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="period-start" formControlName="start" name="period-start">
+                <div class="error-messages" *ngIf="periodStart.touched">
+                  <div *ngIf="periodStart.invalid && periodStart.dirty">* Period Start needs to be at least 1 digit</div>
+                  <div *ngIf="!periodStart.value">* Period Start value is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="period-end">End:</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="period-end" formControlName="end" name="period-end">
+                <div class="error-messages" *ngIf="periodEnd.touched">
+                  <div *ngIf="periodEnd.invalid && periodEnd.dirty">* Period End needs to be at least 1 digit</div>
+                  <div *ngIf="!periodEnd.value">* Period End value is required</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="card-footer">
+          <button type="submit" class="button" (click)="submitPeriod()">SAVE</button>
+        </div>
+        <small *ngIf="periodRecorded">Period bounds are from {{periodStart.value}} to {{periodEnd.value}} </small>
+      </div>
+
+      <div class="card" *ngIf="periodRecorded">
+        <div class="card-header">
+          <div class="header-text">
+            <h1>Sesssion</h1>
+            <small>Please add a session</small>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="sessionForm" (ngSubmit)="submitSession()">
+            <div class="row">
+              <div class="col-25">
+                <label for="session-start">Start:</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="session-start" formControlName="start" name="session-start">
+                <div class="error-messages" *ngIf="sessionStart.touched">
+                  <div *ngIf="sessionStart.invalid && sessionStart.dirty">* Session Start value needs to be at least 1 digit</div>
+                  <div *ngIf="!sessionStart.value">* Session Start value is required</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-25">
+                <label for="session-end">End:</label>
+              </div>
+              <div class="col-75">
+                <input type="number" id="session-end" formControlName="end" name="session-end">
+                <div class="error-messages" *ngIf="sessionEnd.touched">
+                  <div *ngIf="sessionEnd.invalid && sessionEnd.dirty">* Session End needs to be at least 1 digit</div>
+                  <div *ngIf="!sessionEnd.value">* Session End value is required</div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="card-footer">
+          <button type="submit" class="button" (click)="submitSession()">SAVE</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="sessionRecorded">
+      <div class="table" *ngFor="let session of sessions">
+        <div class="table-head">
+          <div class="table-cell">Name</div>
+          <div class="table-cell">Start</div>
+          <div class="table-cell">End</div>
+          <div class="table-cell"></div>
+        </div>
+
+        <div class="table-body">
+          <div class="table-row">
+            <div class="table-cell">{{session.name}}</div>
+            <div class="table-cell">{{session.start | date: 'mediumDate'}}</div>
+            <div class="table-cell">{{session.end | date: 'mediumDate'}}</div>
+            <div class="table-cell">One</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+
+  </div>
+</div>
+
 <app-timeline></app-timeline>
-<p>home works!</p>
