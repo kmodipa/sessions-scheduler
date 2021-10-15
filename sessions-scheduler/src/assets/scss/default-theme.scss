@@ -1,0 +1,245 @@
+@import "colors";
+@import "table";
+
+.main-container {
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    background: $primary-color;
+    padding: 2rem;
+    font-size: 3rem;
+    font-weight: 400;
+    width: 100%;
+
+    @include breakpoints(mobile) {
+      font-size: 2rem;
+    }
+  }
+
+  .body {
+    padding: 1rem 20rem;
+    background: lemonchiffon;
+
+    @include breakpoints(mobile) {
+      padding: 1rem 0rem;
+    }
+
+    @include breakpoints(laptop) {
+      padding: 1rem 10rem;
+    }
+
+    @include breakpoints(desktop) {
+      padding: 1rem 0rem;
+    }
+    .row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      color: $secondary-color;
+      background: $clr-table-gray-stripe;
+      padding: 1rem;
+      width: 30rem;
+      border-radius: .5rem;
+      margin: .6rem;
+
+      @include breakpoints(mobile) {
+        padding-top: 4rem;
+      }
+
+      .card-header {
+        display: flex;
+        text-align: left;
+
+        .header-text {
+
+          h1 {
+            font-weight: 300;
+            margin-bottom: 0;
+          }
+
+          small {
+            font-weight: 200;
+          }
+        }
+      }
+
+      .card-body {
+        color: $secondary-color;
+        margin: 1rem;
+
+        input[type=number]:focus {
+          outline: unset;
+        }
+
+        .row {
+
+          input[type=number] {
+            border: 0;
+            border-bottom: 1px solid $primary-color;
+            width: 100%;
+            padding-bottom: 12px;
+            resize: vertical;
+            background: #F8F8F8;
+            outline: unset;
+          }
+
+          @include breakpoints(mobile) {
+            display: flex;
+            flex-direction: column;
+
+            label {
+              padding: 12px 0 0 0;
+              display: inline-block;
+            }
+
+            .col-25, .col-75, .col-78 {
+              float: left;
+              width: 100%;
+            }
+          }
+
+          @include breakpoints(laptop) {
+            display: block;
+
+            label {
+              padding: 12px 12px 12px 0;
+              display: inline-block;
+            }
+
+            .col-25 {
+              float: left;
+              width: 27%;
+            }
+
+            .col-75 {
+              float: left;
+              width: 67%;
+            }
+            .col-78 {
+              float: left;
+              width: 70.5%;
+            }
+          }
+
+          @include breakpoints(desktop) {
+            display: block;
+
+            label {
+              padding: 12px 12px 12px 0;
+              display: inline-block;
+            }
+
+            .col-25 {
+              float: left;
+              width: 27%;
+            }
+
+            .col-75 {
+              float: left;
+              width: 67%;
+            }
+            .col-78 {
+              float: left;
+              width: 70.5%;
+            }
+          }
+
+          @include breakpoints(largerscreens) {
+            display: block;
+
+            label {
+              padding: 12px 12px 12px 0;
+              display: inline-block;
+            }
+
+            .col-25 {
+              float: left;
+              width: 27%;
+            }
+
+            .col-75 {
+              float: left;
+              width: 67%;
+            }
+            .col-78 {
+              float: left;
+              width: 70.5%;
+            }
+          }
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+        border-top: .7px solid $secondary-color;
+
+        button {
+          outline: unset;
+          font-weight: 300;
+        }
+
+        .reset {
+          color: $primary-color;
+          background: $white;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .submit {
+          background: $primary-color;
+          color: $white;
+          padding: 9px 30px;
+        }
+      }
+    }
+
+    form {
+
+      .save-button {
+        padding-left: 1.5rem;
+      }
+    }
+  }
+
+  .footer {
+
+  }
+
+  .button {
+    background-color: $primary-color;
+    border-radius: .3rem;
+    border: 1px solid transparent;
+    color: $white;
+    padding: 7px 20px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .error-messages {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+    color: $clr-red-delete;
+    font-size: .8rem;
+  }
+}
+
+
