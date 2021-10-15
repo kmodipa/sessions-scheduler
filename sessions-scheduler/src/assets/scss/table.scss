@@ -1,0 +1,51 @@
+@import "page-size-mixin";
+@import "colors";
+
+.table {
+  margin: 1rem 0rem;
+  color: $secondary-color;
+  width: 50%;
+
+  .table-head {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr .5fr;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: .5rem;
+
+    .table-cell {
+      padding-left: .3rem;
+    }
+  }
+
+  .table-body {
+    .table-row {
+      margin-bottom: .5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr .5fr;
+      padding: .5rem;
+
+      button {
+        padding: 9px 23px;
+        background: $primary-color;
+        border-radius: 20px;
+        outline: none;
+      }
+
+      .table-cell {
+        padding: .5rem;
+        width: fit-content;
+
+        input[type=text] {
+          padding: 1px 2px;
+          height: 1.2rem;
+        }
+      }
+
+    }
+
+    .table-row:nth-child(odd) {
+      background-color: $clr-table-gray-stripe;
+    }
+  }
+}
