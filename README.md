@@ -14,7 +14,7 @@ As a user I want to be able to schedule/add a number of sessions, plot the list 
 * Node 12.11.1
 * Terminal/cmd
 
-## ## How to Clone and Run the App
+## How to Clone and Run the App
 - Firstly you will need to clone the project :point_right: `https://github.com/kmodipa/sessions-scheduler.git`.
 - Secondly open your terminal/cmd and navigate to `sessions-scheduler/sessions-scheduler`.
 - Thirdly run the command `npm install` to install the packages 📦  that are required to run the application.
