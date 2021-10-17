@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PeriodModel} from "../../../core/models/Period.Model";
 import {SessionModel} from "../../../core/models/Session.Model";
 
 @Component({
@@ -14,10 +13,13 @@ export class HomeComponent implements OnInit {
   sessionForm: FormGroup;
   periodRecorded = false;
   sessionRecorded = false;
-  period!: PeriodModel;
+  plotSessions = false;
+  sessionOverlaps!: any;
+  totalSessionsAggregate!: any;
   sessions!: SessionModel[]
-  periodSt = 0;
-  periodEd = 0;
+  periodStarts!: Date;
+  periodEnds!: Date;
+  sessionOutOfBoundError = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.periodForm = this.formBuilder.group({
@@ -32,10 +34,36 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.sessions = Array<SessionModel>();
+    this.sessionOverlaps = 0;
+    this.totalSessionsAggregate = 0;
   }
 
   resetSessionForm(): void {
+    this.sessionForm = this.formBuilder.group({
+      start: ['', [Validators.required, Validators.minLength(1)]],
+      end: ['', [Validators.required, Validators.minLength(1)]]
+    });
+  }
 
+  resetPeriodForm(): void {
+    this.periodForm = this.formBuilder.group({
+      start: ['', [Validators.required, Validators.minLength(1)]],
+      end: ['', [Validators.required, Validators.minLength(1)]]
+    });
+  }
+
+  resetSessionsArray(): void {
+    this.sessions.length = 0;
+  }
+
+  resetAll(): void {
+    this.periodRecorded = false;
+    this.sessionRecorded = false;
+    this.plotSessions = false;
+    this.sessionOverlaps = 0;
+    this.totalSessionsAggregate = 0;
+    this.resetPeriodForm();
+    this.resetSessionsArray()
   }
 
   /* Form Getters */
@@ -65,25 +93,72 @@ export class HomeComponent implements OnInit {
     this.sessionEnd.markAsTouched();
   }
 
-  submitPeriod(): void {
+  setPeriod(): void {
     this.markPeriodFormAsTouched();
 
     if (this.periodForm.valid) {
       this.periodRecorded = true;
-      console.log('Perios');
+      this.periodStarts = new Date(this.periodStart.value);
+      this.periodEnds = new Date(this.periodEnd.value);
     }
   }
 
-  submitSession(): void {
+  addSession(): void {
     this.markSessionFormAsTouched();
 
     if (this.sessionForm.valid) {
-      this.sessionRecorded = true;
-      const session = new SessionModel('Session 1', new Date(), new Date());
-      this.sessions.push(session);
-      console.log(this.sessions);
-      console.log('Sessions')
+
+      const session = new SessionModel(
+        'Session ' + (this.sessions.length + 1),
+        new Date(this.sessionStart.value),
+        new Date(this.sessionEnd.value)
+      );
+
+      if (this.checkIfSessionFallsWithinBounds(session)) {
+        this.sessionRecorded = true;
+        this.sessions.push(session);
+      }
+
+      this.resetSessionForm();
     }
+  }
+
+  checkIfSessionFallsWithinBounds(session: SessionModel): boolean {
+    if (session.start.getDate() >= this.periodStarts.getDate() &&
+        session.end.getDate() <= this.periodEnds.getDate()) {
+      this.sessionOutOfBoundError = false;
+      return true;
+    }
+    this.sessionOutOfBoundError = true;
+    return false;
+  }
+
+  plotSessionsTimeline(): void {
+    setTimeout(() => {
+      this.plotSessions = true;
+    }, 1000);
+    this.plotSessions = false;
+    this.getOverlabsTotal();
+    this.aggregateTotalDuration();
+  }
+
+  getOverlabsTotal(): void {
+    for (let i = 0; i < this.sessions.length; i++) {
+      if (this.sessions.length > 1 && ((i + 1) < this.sessions.length)) {
+        if ((this.sessions[i].end.getDate() > this.sessions[i + 1].start.getDate())) {
+          this.sessionOverlaps += (this.sessions[i].end.getDate() - this.sessions[i + 1].start.getDate());
+        }
+      }
+    }
+  }
+
+  aggregateTotalDuration(): void {
+    for (let i = 0; i < this.sessions.length; i++) {
+      this.totalSessionsAggregate += (this.sessions[i].end.getDate() - this.sessions[i].start.getDate());
+      console.log(this.sessions[i].name + ' has ' + (this.sessions[i].end.getDate() - this.sessions[i].start.getDate()) + ' days');
+    }
+
+    this.totalSessionsAggregate -= this.sessionOverlaps;
   }
 
 }

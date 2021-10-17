@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: $white;
+    color: $clr-white;
     background: $primary-color;
     padding: 2rem;
     font-size: 3rem;
@@ -21,10 +21,10 @@
 
   .body {
     padding: 1rem 20rem;
-    background: lemonchiffon;
 
     @include breakpoints(mobile) {
       padding: 1rem 0rem;
+      width: 115vw;
     }
 
     @include breakpoints(laptop) {
@@ -79,7 +79,7 @@
 
         .row {
 
-          input[type=number] {
+          input[type=date] {
             border: 0;
             border-bottom: 1px solid $primary-color;
             width: 100%;
@@ -195,14 +195,14 @@
 
         .reset {
           color: $primary-color;
-          background: $white;
+          background: $clr-white;
           padding-left: 0;
           padding-right: 0;
         }
 
         .submit {
           background: $primary-color;
-          color: $white;
+          color: $clr-white;
           padding: 9px 30px;
         }
       }
@@ -217,14 +217,15 @@
   }
 
   .footer {
-
+    text-align: center;
+    padding: 1rem;
   }
 
   .button {
     background-color: $primary-color;
     border-radius: .3rem;
     border: 1px solid transparent;
-    color: $white;
+    color: $clr-white;
     padding: 7px 20px;
     text-align: center;
     display: inline-block;
@@ -239,6 +240,26 @@
     padding-bottom: .3rem;
     color: $clr-red-delete;
     font-size: .8rem;
+  }
+
+  .success-messages {
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+    color: $clr-green-success;
+    font-size: .8rem;
+  }
+
+  .display-block {
+    display: block;
+  }
+
+  #timeline-chart {
+    margin: 1rem 0rem;
+    width: 70%;
+
+    @include breakpoints(mobile) {
+      width: 100%;
+    }
   }
 }
 
