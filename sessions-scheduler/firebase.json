@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "dist/sessions-scheduler",
+    "site": "sessions-scheduler",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
