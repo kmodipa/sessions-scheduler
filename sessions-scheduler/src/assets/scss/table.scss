@@ -6,6 +6,10 @@
   color: $secondary-color;
   width: 50%;
 
+  @include breakpoints(mobile) {
+    width: 100%;
+  }
+
   .table-head {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr .5fr;
@@ -34,18 +38,37 @@
 
       .table-cell {
         padding: .5rem;
-        width: fit-content;
-
-        input[type=text] {
-          padding: 1px 2px;
-          height: 1.2rem;
-        }
       }
 
     }
 
     .table-row:nth-child(odd) {
       background-color: $clr-table-gray-stripe;
+    }
+  }
+
+  .table-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-top: .7px solid $secondary-color;
+
+    button {
+      outline: unset;
+      font-weight: 300;
+    }
+
+    .reset {
+      color: $primary-color;
+      background: $clr-white;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .submit {
+      background: $primary-color;
+      color: $clr-white;
+      padding: 9px 30px;
     }
   }
 }
