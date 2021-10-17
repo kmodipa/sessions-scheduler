@@ -12,10 +12,11 @@ As a user I want to be able to schedule/add a number of sessions, plot the list 
 * Language Typescript 4.3.5
 * Angular-cli 12.2.4
 * Node 12.11.1
+* Git (for pulling the to your local machine)
 * Terminal/cmd
 
 ## How to Clone and Run the App
-- Firstly you will need to clone the project :point_right: `https://github.com/kmodipa/sessions-scheduler.git`.
+- Firstly you will need to clone the project :point_right: copy and paste `git clone https://github.com/kmodipa/sessions-scheduler.git`.
 - Secondly open your terminal/cmd and navigate to `sessions-scheduler/sessions-scheduler`.
 - Thirdly run the command `npm install` to install the packages 📦  that are required to run the application.
 - and then run `ng serve --port 4200` to launch the application.
