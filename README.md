@@ -21,7 +21,7 @@ As a user I want to be able to schedule/add a number of sessions, plot the list 
 - Thirdly run the command `npm install` to install the packages 📦  that are required to run the application.
 - and then run `ng serve --port 4200` to launch the application.
 - Now open your browser and go to `http://localhost:4200/` to view.
-- That's all 💁.
+- That's all :slightly_smiling_face:.
 
 ## Is the Application hosted live?
 Yes and you can find it here :point_right: [https://sessions-scheduler.web.app/](https://sessions-scheduler.web.app/)
