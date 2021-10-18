@@ -12,7 +12,7 @@ As a user I want to be able to schedule/add a number of sessions, plot the list 
 * Language Typescript 4.3.5
 * Angular-cli 12.2.4
 * Node 12.11.1
-* Git (for pulling the to your local machine)
+* Git (for pulling the code down to your local machine)
 * Terminal/cmd
 
 ## How to Clone and Run the App
